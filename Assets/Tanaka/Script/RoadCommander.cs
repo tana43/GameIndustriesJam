@@ -33,7 +33,7 @@ public class RoadCommander : MonoBehaviour
         //各道路オブジェクトのスクロール値更新
         foreach(var road in roads_)
         {
-            float speed = scrollSpeed_ * scrollSpeedScale_;
+            float speed = scrollSpeed_ * scrollSpeedScale_ * SpeedSystem.generalSpeed_;
             road.offsetSpeed_.y = scrollSpeed_;
         }
     }
