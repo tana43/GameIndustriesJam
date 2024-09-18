@@ -5,11 +5,13 @@ using UnityEngine.UIElements;
 
 public class enemysponescript : MonoBehaviour
 {
-    [SerializeField] GameObject enemycar;
+    [SerializeField] private GameObject[] enemycar;
     [SerializeField] float spown = 1;
     [SerializeField] private Vector2 shotPoint;
     [SerializeField] float adjustment;
-
+    [SerializeField] float spawntime;
+    float time;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,18 +20,22 @@ public class enemysponescript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (Input.GetMouseButtonDown(0))
+       if (time>=spawntime)
         {
             spawnenemy();
+            time = 0;
         }
+
+        time += Time.deltaTime;
     }
 
     void spawnenemy()
     {
         
         Vector2 spawnpos;
+        int randomcar = UnityEngine.Random.Range(0, enemycar.Length);
         int random = UnityEngine.Random.Range(0, 3);
-        if(random==0)
+        if (random==0)
         {
             spawnpos = shotPoint;
             spawnpos.x = -adjustment;
@@ -43,6 +49,6 @@ public class enemysponescript : MonoBehaviour
             spawnpos = shotPoint;
             spawnpos.x = adjustment;
         }
-        Instantiate(enemycar, spawnpos, Quaternion.Euler(0, 0, 0));
+        Instantiate(enemycar[randomcar], spawnpos, Quaternion.Euler(0, 0, 0));
     }
 }
