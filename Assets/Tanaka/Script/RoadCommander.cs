@@ -9,7 +9,7 @@ public class RoadCommander : MonoBehaviour
     //背景をスクロールさせる速度
     public float scrollSpeed_;
 
-    public float scrollSpeedScale_ = 1.0f;
+    private float scrollSpeedScale_ = 0.01f;
 
     [SerializeField]
     private BackLoop[] roads_;
@@ -33,7 +33,7 @@ public class RoadCommander : MonoBehaviour
         //各道路オブジェクトのスクロール値更新
         foreach(var road in roads_)
         {
-            float speed = scrollSpeed_ * scrollSpeedScale_;
+            float speed = scrollSpeed_ * scrollSpeedScale_ * SpeedSystem.generalSpeed_;
             road.offsetSpeed_.y = scrollSpeed_;
         }
     }
