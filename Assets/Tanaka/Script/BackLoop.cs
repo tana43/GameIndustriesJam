@@ -3,23 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Back_Loop : MonoBehaviour
+public class BackLoop : MonoBehaviour
 {
     private const float maxLength_ = 1.0f;
     private const string propName_ = "_MainTex";
 
-    [SerializeField]
-    private Vector2 offsetSpeed_;
+    public Vector2 offsetSpeed_;
 
+    [SerializeField]
     private Material material_;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (GetComponent<Image>() is Image i)
-        {
-            material_ = i.material;
-        }
+        //material_ = GetComponent<Material>();
     }
 
     // Update is called once per frame
