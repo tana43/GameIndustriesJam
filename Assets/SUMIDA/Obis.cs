@@ -6,6 +6,9 @@ public class Obis : MonoBehaviour
 {
     public float borderSpeed = 90.0f;
 
+    //エフェクトプレハブ
+    public GameObject flashEffectPrefab_;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +18,17 @@ public class Obis : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //速度に合わせてオービスを下へ動かしていく
+        var pos = transform.position;
+        pos.y -= RoadCommander.generalScrollSpeed_;
+        transform.position = pos;
 
+        //effectテスト
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            //flasheffect生成
+            Instantiate(flashEffectPrefab_, transform.position, Quaternion.Euler(Vector3.zero));
+        }
     }
 
     private int CheckSpeed(float speed) 
@@ -65,6 +78,13 @@ public class Obis : MonoBehaviour
 
         int HP = 6;
 
-        HP-= CheckSpeed(scoreSpeed);
+        int score = CheckSpeed(scoreSpeed);
+        if (score > 0)
+        {
+            HP -= score;
+
+            //flasheffect生成
+            Instantiate(flashEffectPrefab_, transform.position, Quaternion.Euler(Vector3.zero));
+        }
     }
 }
