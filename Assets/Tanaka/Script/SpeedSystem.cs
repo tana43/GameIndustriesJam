@@ -31,6 +31,6 @@ public class SpeedSystem : MonoBehaviour
 
     private void LateUpdate()
     {
-        generalSpeed_ = protoSpeed_;
+        //generalSpeed_ = protoSpeed_;
     }
 }
