@@ -9,7 +9,7 @@ public class SpeedSystem : MonoBehaviour
 
     //インスペクター上で動かすための仮の速度
     [SerializeField]
-    private float protoSpeed = 0.0f;
+    private float protoSpeed_ = 0.0f;
 
 
     // Start is called before the first frame update
@@ -18,9 +18,19 @@ public class SpeedSystem : MonoBehaviour
         
     }
 
+    private void Awake()
+    {
+        //generalSpeed_ = protoSpeed_;
+    }
+
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void LateUpdate()
+    {
+        generalSpeed_ = protoSpeed_;
     }
 }

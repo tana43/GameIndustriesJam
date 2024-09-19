@@ -34,7 +34,7 @@ public class RoadCommander : MonoBehaviour
         foreach(var road in roads_)
         {
             float speed = scrollSpeed_ * scrollSpeedScale_ * SpeedSystem.generalSpeed_;
-            road.offsetSpeed_.y = scrollSpeed_;
+            road.offsetSpeed_.y = speed;
         }
     }
 }
