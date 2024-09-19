@@ -67,6 +67,8 @@ public class Obis : MonoBehaviour
         int HP = 6;
 
         HP-= CheckSpeed(scoreSpeed);
+
+
         if (collision.gameObject.tag == "enemycar")
         {
             Debug.Log("hit");
