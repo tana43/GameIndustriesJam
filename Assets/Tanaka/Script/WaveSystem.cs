@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class WaveSystem : MonoBehaviour
 {
-    //Waveシステム
+    public float goalPoint_;//目標地点までの距離
 
+    static public float distanceTraveled_;
+
+    //１つのWaveで使用するパラメータ
+    struct WaveParameter
+    {
+        float timeLimit_;//時間制限
+        float obisSetInterval_;//オービスを配置する間隔
+        float obisFirstPoint_;//１つめのオービスまでの距離
+    }
 
 
     // Start is called before the first frame update
