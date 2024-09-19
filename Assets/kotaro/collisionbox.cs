@@ -23,8 +23,11 @@ public class collisionbox : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("hit");
-        collisionflag = true;
+        if (collision.gameObject.tag == "enemycar")
+        {
+            Debug.Log("hit");
+            collisionflag = true;
+        }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
