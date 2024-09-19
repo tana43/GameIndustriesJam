@@ -9,10 +9,14 @@ public class Obis : MonoBehaviour
     //エフェクトプレハブ
     public GameObject flashEffectPrefab_;
 
+    //ドライバー
+    public GameObject driverObject_;
+    private Driver driverScript_;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        driverScript_ = driverObject_.GetComponent<Driver>();
     }
 
     // Update is called once per frame
@@ -46,6 +50,7 @@ public class Obis : MonoBehaviour
         {
             Debug.Log("２点");
             //HP-=2;
+            return 2;
         }
 
         // 速度が25km以上かつ、40km未満なら
@@ -53,12 +58,14 @@ public class Obis : MonoBehaviour
         {
             Debug.Log("３点");
             //HP-=3;
+            return 3;
         }
 
         // 速度が40km以上かつ、50km未満なら
         if (speed >= 40 && speed < 50)
         {
             Debug.Log("５点");
+            return 5;
             //HP-=5;
         }
 
@@ -67,7 +74,7 @@ public class Obis : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        float carSpeed = collision.gameObject.GetComponent<Player>().speed;
+        float carSpeed = collision.gameObject.GetComponent<Player>().speedY;
 
         float scoreSpeed = carSpeed - borderSpeed;
 
@@ -76,15 +83,14 @@ public class Obis : MonoBehaviour
             return;
         }
 
-        int HP = 6;
-
         int score = CheckSpeed(scoreSpeed);
         if (score > 0)
         {
-            HP -= score;
-
-            //flasheffect生成
+            //flashEffect生成
             Instantiate(flashEffectPrefab_, transform.position, Quaternion.Euler(Vector3.zero));
+
+            //ドライバーに違反点数を科す
+            driverScript_.Violation(score);
         }
     }
 }
