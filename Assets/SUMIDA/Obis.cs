@@ -67,7 +67,7 @@ public class Obis : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        float carSpeed = collision.gameObject.GetComponent<Player>().speed;
+        float carSpeed = collision.gameObject.GetComponent<Player>().speedX;
 
         float scoreSpeed = carSpeed - borderSpeed;
 
