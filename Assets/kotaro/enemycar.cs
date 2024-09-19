@@ -23,7 +23,7 @@ public class enemycar : MonoBehaviour
         
 
         Vector2 pos = transform.position;
-        pos.y -= (float)movespeed +player.GetComponent<Player>().speedY * Time.deltaTime;
+        pos.y -= ((float)movespeed +player.GetComponent<Player>().speedY) * Time.deltaTime;
         transform.position = pos;
 
         // è¡ãé

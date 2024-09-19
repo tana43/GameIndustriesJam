@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 {
     public float acceleration = 10;                   //加速度      
     public float initialVelocity = 60;                  //初速
-    public float speed = 10.0f;                         //x軸の変化量
+    public float speedX = 10.0f;                         //x軸の変化量
     public float speedY = 0;                            //道路の速度変化量
     public float deceleration = 3.0f;                  //減速
     public float rotation = 30.0f;                      //角度
@@ -51,17 +51,19 @@ public class Player : MonoBehaviour
             }
             else
                 acceleration = 10;
-            speedY += acceleration * Time.deltaTime;
+            //speedY += acceleration * Time.deltaTime;
+            speedY += VelocityVariation();
         }
         //右マウス減速
         else if(rightClick)
         {
-            speedY -= (deceleration+brake) * Time.deltaTime;
+            speedY -= VelocityVariation(brake);
             speedY = Mathf.Max(speedY, 0);
         }
         else
         {
-            speedY -= deceleration * Time.deltaTime;
+            //speedY -= deceleration * Time.deltaTime;
+            speedY -= VelocityVariation();
             speedY = Mathf.Max(speedY, 0);
         }
 
@@ -81,8 +83,6 @@ public class Player : MonoBehaviour
             //lerpの割合を更新
             rate = Mathf.Clamp01(moveRateVolume += moveRotationSpeed * Time.deltaTime);
         }
-
-        //動く処理
         //同時に押された場合
         if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
         {
@@ -91,19 +91,33 @@ public class Player : MonoBehaviour
         //左に動く
         else if (Input.GetKey(KeyCode.A))
         {
-            pos.x -= speed * Time.deltaTime;
+            pos.x -= speedX * Time.deltaTime;
             angle.z = PlayerLeftRotation();
         }
         //右に動く
         else if (Input.GetKey(KeyCode.D))
         {
-            pos.x += speed * Time.deltaTime;
+            pos.x += speedX * Time.deltaTime;
             angle.z = PlayerRightRotation();
         }
         //何もキーが押されていない時
         else
         {
             angle.z = PlayerReturnRotation();
+        }
+        //スピード０の時X軸移動、回転できない
+        if(speedY<=20)
+        {
+            speedX = 5;
+            if(speedY<=0)
+            {
+                speedX = 0;
+                angle.z = 0;
+            }
+        }
+        else
+        {
+            speedX = 10;
         }
 
         transform.position = pos;
@@ -113,13 +127,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //カメラシェイク
-       if(cameraChine)
-        {
-            
-         
-        }
-        //cameraChine = false;
+
     }
 
     //右の回転処理
@@ -148,6 +156,13 @@ public class Player : MonoBehaviour
     float Lerp(float pos, float inverse)
     {
         return Mathf.Lerp(pos, 1.0f * inverse, rate);
+    }
+    //車の加減速
+    float VelocityVariation(float brake = 0)
+    {
+        float carSpeed = 0;
+        carSpeed = (acceleration+brake) * Time.deltaTime;
+        return carSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
