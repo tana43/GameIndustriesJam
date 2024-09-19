@@ -26,6 +26,6 @@ public class SpeedMeter : MonoBehaviour
         string text = speedInt.ToString();
         text = text.PadLeft(2, '0');
         text = text.Insert(text.Length - 1, ".");
-        timerText.text = text + "km/h";
+        timerText.text = text;
     }
 }
