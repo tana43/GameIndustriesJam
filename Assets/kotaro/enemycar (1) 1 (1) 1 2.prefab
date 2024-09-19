@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6603755860781370557}
   m_Layer: 0
   m_Name: enemycar (1) 1 (1) 1 2
-  m_TagString: Untagged
+  m_TagString: enemycar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movespeed: 5
+  minspeed: 1
+  maxspeed: 5
 --- !u!61 &6603755860781370557
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -219,3 +221,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 503a8e440c2c6804685804326bd78e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time: 0

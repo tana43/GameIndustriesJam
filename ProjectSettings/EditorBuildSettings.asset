@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Fukuyama/TitleScene.unity
+    guid: affaa7e52487ed042b157253a9e45851
+  - enabled: 1
+    path: Assets/Fukuyama/ResultScene.unity
+    guid: 8f3ffa26ca05f1a45ab250812b303513
   m_configObjects: {}
