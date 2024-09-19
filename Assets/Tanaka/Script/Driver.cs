@@ -22,16 +22,36 @@ public class Driver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //–Æ‹–’âŽ~ˆ•ª‰‰o
-        
+
     }
 
-    void DieUpdate()
+    //ˆá”½sˆ×‚ð‚µ‚½
+    public void Violation(int score)
+    {
+        //Šù‚É–Æ’â‚© 
+        if (die_) return;
+
+        hp_ += score;
+
+        //–Æ’â‚µ‚Ä‚¢‚È‚¢‚©
+        DieCheck();
+    }
+
+    //Ž€–S‚µ‚Ä‚¢‚é‚©
+    void DieCheck()
     {
         //–Æ’â‚É‚È‚Á‚Ä‚¢‚È‚¢‚©
-        if(hp_ >= licenseSuspensionScore)
+        if (hp_ >= licenseSuspensionScore)
         {
-
+            Die();
         }
+    }
+
+    //Ž€–S
+    void Die()
+    {
+        die_ = true;
+
+
     }
 }
