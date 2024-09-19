@@ -20,12 +20,17 @@ public class SpeedSystem : MonoBehaviour
 
     private void Awake()
     {
-        generalSpeed_ = protoSpeed_;
+        //generalSpeed_ = protoSpeed_;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void LateUpdate()
+    {
+        generalSpeed_ = protoSpeed_;
     }
 }
