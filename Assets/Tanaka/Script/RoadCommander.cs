@@ -11,12 +11,18 @@ public class RoadCommander : MonoBehaviour
 
     private float scrollSpeedScale_ = 0.01f;
 
+    //スクロールしている速度（静的変数）
+    public static float generalScrollSpeed_;
+
+    [SerializeField] private float generalScrollSpeedScale_ = 1.0f;
+
     [SerializeField]
     private BackLoop[] roads_;
 
     // Start is called before the first frame update
     void Start()
     {
+        generalScrollSpeedScale_ = 0.22f;
 
         //下のはインスペクターで設定する
         //子オブジェクト（道路１レーン）を登録
@@ -30,11 +36,15 @@ public class RoadCommander : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float speed = scrollSpeed_ * scrollSpeedScale_ * SpeedSystem.generalSpeed_;
         //各道路オブジェクトのスクロール値更新
-        foreach(var road in roads_)
+        foreach (var road in roads_)
         {
-            float speed = scrollSpeed_ * scrollSpeedScale_ * SpeedSystem.generalSpeed_;
             road.offsetSpeed_.y = speed;
         }
+
+        //静的変数の更新
+        generalScrollSpeed_ = speed;
+        generalScrollSpeed_ *= generalScrollSpeedScale_;
     }
 }
