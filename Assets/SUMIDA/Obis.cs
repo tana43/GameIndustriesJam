@@ -5,6 +5,7 @@ using UnityEngine;
 public class Obis : MonoBehaviour
 {
     public float borderSpeed = 90.0f;
+    private bool collisionflag = false;
 
     // Start is called before the first frame update
     void Start()
@@ -66,5 +67,10 @@ public class Obis : MonoBehaviour
         int HP = 6;
 
         HP-= CheckSpeed(scoreSpeed);
+        if (collision.gameObject.tag == "enemycar")
+        {
+            Debug.Log("hit");
+            collisionflag = true;
+        }
     }
 }

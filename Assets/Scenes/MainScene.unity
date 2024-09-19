@@ -134,7 +134,7 @@ PrefabInstance:
     - target: {fileID: 6007019641203790744, guid: f69f5a252034b9545a807d44296d1fa1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6007019641203790744, guid: f69f5a252034b9545a807d44296d1fa1,
         type: 3}
@@ -412,7 +412,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3300693516157920701
 PrefabInstance:
@@ -619,6 +619,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedMeter
       objectReference: {fileID: 0}
+    - target: {fileID: 7827686456425952637, guid: d3593886b78f04c47a86ef56a20432c9,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3593886b78f04c47a86ef56a20432c9, type: 3}
 --- !u!1001 &7843198408420588485
@@ -710,7 +715,7 @@ PrefabInstance:
     - target: {fileID: 8609925887372104373, guid: 7f2fabb8c6ebdc0408645efe3a39f93c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8609925887372104373, guid: 7f2fabb8c6ebdc0408645efe3a39f93c,
         type: 3}
