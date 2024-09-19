@@ -25,9 +25,12 @@ public class BackLoop : MonoBehaviour
         if (material_)
         {
             // xとyの値が0 ～ 1でリピートするようにする
-            var x = Mathf.Repeat(Time.time * offsetSpeed_.x, maxLength_);
-            var y = Mathf.Repeat(Time.time * offsetSpeed_.y, maxLength_);
-            var offset = new Vector2(x, y);
+            //var x = Mathf.Repeat(Time.time * offsetSpeed_.x, maxLength_);
+            //var y = Mathf.Repeat(Time.time * offsetSpeed_.y, maxLength_);
+             //= new Vector2(x, y);
+            var offset = material_.GetTextureOffset(propName_);
+            Vector2 offsetSpeed = new Vector2(0,offsetSpeed_.y * Time.deltaTime);
+            offset += offsetSpeed;
             material_.SetTextureOffset(propName_, offset);
         }
     }
