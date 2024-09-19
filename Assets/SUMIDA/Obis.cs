@@ -5,6 +5,7 @@ using UnityEngine;
 public class Obis : MonoBehaviour
 {
     public float borderSpeed = 90.0f;
+    private bool collisionflag = false;
 
     //エフェクトプレハブ
     public GameObject flashEffectPrefab_;
@@ -88,7 +89,12 @@ public class Obis : MonoBehaviour
         {
             //flashEffect生成
             Instantiate(flashEffectPrefab_, transform.position, Quaternion.Euler(Vector3.zero));
+        }
 
+        if (collision.gameObject.tag == "enemycar")
+        {
+            Debug.Log("hit");
+            collisionflag = true;
             //ドライバーに違反点数を科す
             driverScript_.Violation(score);
         }
