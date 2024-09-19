@@ -31,6 +31,6 @@ public class collisionbox : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        time = time + Time.deltaTime/20;
+        time = time + Time.deltaTime/30;
     }
 }

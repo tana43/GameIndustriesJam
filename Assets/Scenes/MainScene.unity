@@ -191,6 +191,53 @@ PrefabInstance:
       propertyPath: m_Name
       value: spawngameobject
       objectReference: {fileID: 0}
+    - target: {fileID: 6007019641203790751, guid: f69f5a252034b9545a807d44296d1fa1,
+        type: 3}
+      propertyPath: shotPoint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007019641203790751, guid: f69f5a252034b9545a807d44296d1fa1,
+        type: 3}
+      propertyPath: enemycar.Array.data[0]
+      value: 
+      objectReference: {fileID: 5925550490754460868, guid: 081ff7adff0e4284588a3ff0df8c8e7c,
+        type: 3}
+    - target: {fileID: 6007019641203790751, guid: f69f5a252034b9545a807d44296d1fa1,
+        type: 3}
+      propertyPath: enemycar.Array.data[1]
+      value: 
+      objectReference: {fileID: 8425265298763993296, guid: 300155bc37e87124697e3b9792b9706b,
+        type: 3}
+    - target: {fileID: 6007019641203790751, guid: f69f5a252034b9545a807d44296d1fa1,
+        type: 3}
+      propertyPath: enemycar.Array.data[2]
+      value: 
+      objectReference: {fileID: 7247425005950355497, guid: d9a8a27fe4b0a0b4cb2d9aaea37d91bd,
+        type: 3}
+    - target: {fileID: 6007019641203790751, guid: f69f5a252034b9545a807d44296d1fa1,
+        type: 3}
+      propertyPath: enemycar.Array.data[3]
+      value: 
+      objectReference: {fileID: 559096359715175542, guid: ec2ae01b448a7a7479f09977760cbc91,
+        type: 3}
+    - target: {fileID: 6007019641203790751, guid: f69f5a252034b9545a807d44296d1fa1,
+        type: 3}
+      propertyPath: enemycar.Array.data[4]
+      value: 
+      objectReference: {fileID: 7518698106306413847, guid: 1737b61bca6b79d4882dd48673cef1a4,
+        type: 3}
+    - target: {fileID: 6007019641203790751, guid: f69f5a252034b9545a807d44296d1fa1,
+        type: 3}
+      propertyPath: enemycar.Array.data[5]
+      value: 
+      objectReference: {fileID: 8241151390983908948, guid: ff9def72ce4d04b48865a3f65abccd5c,
+        type: 3}
+    - target: {fileID: 6007019641203790751, guid: f69f5a252034b9545a807d44296d1fa1,
+        type: 3}
+      propertyPath: enemycar.Array.data[6]
+      value: 
+      objectReference: {fileID: 3488177002180387438, guid: 4c660e9e910d9544481b67bd74b87f0e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f69f5a252034b9545a807d44296d1fa1, type: 3}
 --- !u!1 &1769298731
@@ -275,7 +322,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1840503196
 PrefabInstance:
@@ -292,17 +339,17 @@ PrefabInstance:
     - target: {fileID: 7197870622597854828, guid: 5e0a3e9cb0b0ad148aef8c9280ef5e00,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7197870622597854828, guid: 5e0a3e9cb0b0ad148aef8c9280ef5e00,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.45
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 7197870622597854828, guid: 5e0a3e9cb0b0ad148aef8c9280ef5e00,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.69
+      value: -2.09
       objectReference: {fileID: 0}
     - target: {fileID: 7197870622597854828, guid: 5e0a3e9cb0b0ad148aef8c9280ef5e00,
         type: 3}
@@ -633,6 +680,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3626796869566618245, guid: c1edbe8df011afc4fac846c506652725,
+        type: 3}
+      propertyPath: borderSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626796869566618247, guid: c1edbe8df011afc4fac846c506652725,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626796869566618247, guid: c1edbe8df011afc4fac846c506652725,
+        type: 3}
+      propertyPath: m_MaskInteraction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626796871365837344, guid: c1edbe8df011afc4fac846c506652725,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4859718248595420760, guid: c1edbe8df011afc4fac846c506652725,
         type: 3}
       propertyPath: m_RootOrder

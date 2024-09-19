@@ -89,16 +89,14 @@ public class Obis : MonoBehaviour
         {
             //flashEffect生成
             Instantiate(flashEffectPrefab_, transform.position, Quaternion.Euler(Vector3.zero));
+        }
 
-<<<<<<< HEAD
         if (collision.gameObject.tag == "enemycar")
         {
             Debug.Log("hit");
             collisionflag = true;
-=======
             //ドライバーに違反点数を科す
             driverScript_.Violation(score);
->>>>>>> origin/Tanaka
         }
     }
 }
