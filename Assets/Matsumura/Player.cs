@@ -54,13 +54,7 @@ public class Player : MonoBehaviour
 
         SpeedSystem.generalSpeed_ = speedY;
 
-        // 最終的にスクロールの速度に加算
-        //SpeedSystem.generalSpeed_ = Mathf.Max(SpeedSystem.generalSpeed_, 0);
-
         test = SpeedSystem.generalSpeed_;
-
-        //システムに速度を代入
-        //SpeedSystem.generalSpeed_ = speedY;
 
         Vector2 pos = transform.position;
         Vector3 angle = transform.eulerAngles;
