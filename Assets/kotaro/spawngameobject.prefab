@@ -53,6 +53,6 @@ MonoBehaviour:
   - {fileID: 8782529657795034691, guid: dc006002cc253a04d89507cd49d9ede0, type: 3}
   - {fileID: 6767405550665797483, guid: 9afeeae770331924d8a35600bc508c7f, type: 3}
   spown: 1
-  shotPoint: {x: 0, y: 6.5}
+  shotPoint: {x: 0.6, y: 6.5}
   adjustment: 2.5
   spawntime: 2.5
