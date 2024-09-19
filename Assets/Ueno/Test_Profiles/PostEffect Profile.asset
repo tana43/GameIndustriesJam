@@ -80,10 +80,10 @@ MonoBehaviour:
     value: 0.71
   clamp:
     overrideState: 0
-    value: 65469.05
+    value: 1e+17
   diffusion:
     overrideState: 0
-    value: 1.44
+    value: 8.71
   anamorphicRatio:
     overrideState: 0
     value: 1
@@ -156,7 +156,7 @@ MonoBehaviour:
     value: 0
   tint:
     overrideState: 0
-    value: -0
+    value: 0
   colorFilter:
     overrideState: 1
     value: {r: 1, g: 1, b: 1, a: 1}
@@ -171,7 +171,7 @@ MonoBehaviour:
     value: 0
   postExposure:
     overrideState: 1
-    value: 0
+    value: 0.44
   contrast:
     overrideState: 1
     value: 0
