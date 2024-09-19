@@ -559,6 +559,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8609925887372104372, guid: 7f2fabb8c6ebdc0408645efe3a39f93c,
+        type: 3}
+      propertyPath: scrollSpeed_
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8609925887372104373, guid: 7f2fabb8c6ebdc0408645efe3a39f93c,
         type: 3}
       propertyPath: m_RootOrder

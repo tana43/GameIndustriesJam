@@ -7,7 +7,7 @@ using UnityEngine;
 public class RoadCommander : MonoBehaviour
 {
     //背景をスクロールさせる速度
-    public float scrollSpeed_;
+    public float scrollSpeed_ = 1.0f;
 
     private float scrollSpeedScale_ = 0.01f;
 
