@@ -23,6 +23,7 @@ public class SpeedMeter : MonoBehaviour
 
         //‘¬“x
         int speedInt = (int)(speed * 10);
+        speedInt = System.Math.Max(0, speedInt);
         string text = speedInt.ToString();
         text = text.PadLeft(2, '0');
         text = text.Insert(text.Length - 1, ".");
