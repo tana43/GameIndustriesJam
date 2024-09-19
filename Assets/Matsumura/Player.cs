@@ -6,11 +6,12 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
-    public float acceleration = 0.1f;                   //加速度      
+    public float brake = 7;                             //ブレーキ用
+    public float acceleration = 7;                   //加速度      
     public float initialVelocity = 60;                  //初速
     public float speed = 10.0f;                         //x軸の変化量
     public float speedY = 0;                            //道路の速度変化量
-    public float deceleration = 0.99f;                  //減速
+    public float deceleration = 3.0f;                  //減速
     public float rotation = 30.0f;                      //角度
     public float startRotation = 0;                     //角度の初期値
     private float oldRotation = 0.0f;                   //前回の回転値
@@ -22,7 +23,8 @@ public class Player : MonoBehaviour
 
     public float test = 0;
 
-    bool a;
+    bool leftClick;
+    bool rightClick;
 
     // Start is called before the first frame update
     void Start()
@@ -32,11 +34,16 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // ボタンを押して加速
-        if (a)
+        // 左マウスを押して加速
+        if (leftClick)
         {
             Debug.Log("加速");
             speedY += acceleration * Time.deltaTime;
+        }
+        //右マウス減速
+        else if(rightClick)
+        {
+            speedY -= (deceleration+brake) * Time.deltaTime;
         }
         else
         {
@@ -51,18 +58,15 @@ public class Player : MonoBehaviour
         //SpeedSystem.generalSpeed_ = Mathf.Max(SpeedSystem.generalSpeed_, 0);
 
         test = SpeedSystem.generalSpeed_;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
         //システムに速度を代入
         //SpeedSystem.generalSpeed_ = speedY;
 
         Vector2 pos = transform.position;
         Vector3 angle = transform.eulerAngles;
 
-        a = Input.GetMouseButton(0);
+        leftClick = Input.GetMouseButton(0);
+        rightClick = Input.GetMouseButton(1);
 
         //ボタンが押された場合
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
@@ -97,6 +101,12 @@ public class Player : MonoBehaviour
 
         transform.position = pos;
         transform.eulerAngles = angle;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+       
     }
 
     //右の回転処理

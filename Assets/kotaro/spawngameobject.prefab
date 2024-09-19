@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6007019641203790750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6007019641203790744}
+  - component: {fileID: 6007019641203790751}
+  m_Layer: 0
+  m_Name: spawngameobject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6007019641203790744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6007019641203790750}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.3006036, y: -0.36131367, z: -0.0069113974}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6007019641203790751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6007019641203790750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e88233fc0391374489849bc8ea7d4c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemycar:
+  - {fileID: 2999061895021714242, guid: 9b5e8a820d4e4de4e84762103f27d0ad, type: 3}
+  - {fileID: 3143530005113221554, guid: df0dfee80b1a00048a31726302718ec5, type: 3}
+  - {fileID: 8541649740242358550, guid: e6cd53491daad5e49983d0e1fb5054db, type: 3}
+  - {fileID: 158069121827342247, guid: ab98d51a36eeb2c4cb1ab6f9eb590833, type: 3}
+  - {fileID: 3699442387098345389, guid: a4fd06c12ccc088489e18938ebfc13ef, type: 3}
+  - {fileID: 8782529657795034691, guid: dc006002cc253a04d89507cd49d9ede0, type: 3}
+  - {fileID: 6767405550665797483, guid: 9afeeae770331924d8a35600bc508c7f, type: 3}
+  spown: 1
+  shotPoint: {x: 0, y: 6.5}
+  adjustment: 2.5
+  spawntime: 2.5
