@@ -13,10 +13,8 @@ public class ObisManager : MonoBehaviour
     public float obisBorderSpeed_;
 
     //各速度違反計測点数
-    [SerializeField]
-    private float speeding4Score_ = 20.0f;
-    [SerializeField]
-    private float speeding6Score_ = 40.0f;
+    public float speeding4Score_ = 20.0f;
+    public float speeding6Score_ = 40.0f;
 
     //オービスの生成範囲
     public float obisSpawnArea_;
