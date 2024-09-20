@@ -13,6 +13,8 @@ public class WaveSystem : MonoBehaviour
     public GameObject obisManagerObject_;
     private ObisManager obisManager_;
 
+    public ObisManager GetObisManager() { return obisManager_; }
+
     //ゲームシステム
     public GameObject gameSystemObject_;
     private GameSystem gameSystem_;
@@ -68,13 +70,18 @@ public class WaveSystem : MonoBehaviour
 
         nextWaveWaitTimer_ = 0.0f;
 
-        //ウェーブ１へ
-        NextWave();
+        
     }
 
     // Update is called once per frame
     void Update()
     {   
+        if(currentWave_ == 0)
+        {
+            //ウェーブ１へ
+            NextWave();
+        }
+
         //テキスト更新
         TextUiUpdate();
 

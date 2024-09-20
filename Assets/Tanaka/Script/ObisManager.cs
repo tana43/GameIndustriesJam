@@ -53,6 +53,17 @@ public class ObisManager : MonoBehaviour
     [SerializeField]
     private GameObject playerObject_;
 
+    //次のオービスを取得
+    public Obis GetNextObis()
+    {
+        var obis = obisList_[nextObisIndex_];
+        if(obis)
+        {
+            return obis;
+        }
+        return null;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -140,7 +151,7 @@ public class ObisManager : MonoBehaviour
     void UpdatePassingObis()
     {
         //要素数が越えていないか
-        if (obisList_.Count >= nextObisIndex_) return;
+        if (nextObisIndex_ >= obisList_.Count) return;
 
         //通過しているなら次のオービスへ
         var obis = obisList_[nextObisIndex_];
