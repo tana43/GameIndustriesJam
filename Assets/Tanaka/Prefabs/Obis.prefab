@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 33f1253f30dff8349ba9d92090399626, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123,7 +123,9 @@ MonoBehaviour:
   borderSpeed: 20
   flashEffectPrefab_: {fileID: 271432100292449002, guid: 3727f074971170444a7f9974f750a8a1,
     type: 3}
-  driverObject_: {fileID: 0}
+  speeding4Score_: 20
+  speeding6Score_: 40
+  passing_: 0
 --- !u!1 &3626796871365837348
 GameObject:
   m_ObjectHideFlags: 0
