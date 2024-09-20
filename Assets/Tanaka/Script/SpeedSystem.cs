@@ -7,10 +7,6 @@ public class SpeedSystem : MonoBehaviour
     //プレイヤーの速度が入る
     public static float generalSpeed_;
 
-    //インスペクター上で動かすための仮の速度
-    [SerializeField]
-    private float protoSpeed_ = 0.0f;
-
 
     // Start is called before the first frame update
     void Start()

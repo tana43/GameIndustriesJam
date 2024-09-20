@@ -25,7 +25,7 @@ public class collisionbox : MonoBehaviour
     {
         if (collision.gameObject.tag == "enemycar")
         {
-            Debug.Log("hit");
+            //Debug.Log("hit");
             collisionflag = true;
         }
     }

@@ -40,6 +40,9 @@ public class Player : MonoBehaviour
     float SErun = 0;
     public float SEcrash = 0;
 
+    //ドライバー
+    private Driver driver;
+
     public float test = 0;                              //generalSpeed_の値を確認する用
 
     public AudioClip brakeSE;
@@ -59,6 +62,13 @@ public class Player : MonoBehaviour
         startRotation = 0.0f;
         speedY = 60;
         //Component取得
+
+        //audioSource = GetComponent<AudioSource>();
+
+        //ドライバーを取得
+        var driverObj = GameObject.Find("Driver");
+        driver = driverObj.GetComponent<Driver>();
+
         acceleAudio    = gameObject.AddComponent<AudioSource>();  //アクセルのSE
         acceleAudio.loop = false;
 
@@ -71,8 +81,10 @@ public class Player : MonoBehaviour
         runAudio = gameObject.AddComponent<AudioSource>();        //走行音SE
         runAudio.loop = true;
 
+
         crashAudio = gameObject.AddComponent<AudioSource>();        //ぶつかるSE
         crashAudio.loop = false;
+
     }
 
     private void FixedUpdate()
@@ -150,8 +162,14 @@ public class Player : MonoBehaviour
             speedX = 10;
         }
 
+        //TODO:松村くんここ追加したー（田中
+        //ドライバーが免停なら即減速し、処理を止める
+        if (driver.die_)
+        {
+            LicenseSuspensionBrake();
+        }
         // 左マウスを押して加速　アクセル
-        if (Input.GetMouseButton(0))
+        else if (Input.GetMouseButton(0))
         {
             Debug.Log("加速");
            
@@ -291,5 +309,23 @@ public class Player : MonoBehaviour
             speedY -= (acceleration + 30) * Time.deltaTime;
             speedY = Mathf.Max(speedY, 0);
         }
+    }
+
+    //死んだ（免停）のときに自動でブレーキを掛ける
+    void LicenseSuspensionBrake()
+    {
+        //audioSource.Play();
+        if (playingSound == false && speedY > 0)
+        {
+            playingSound = true;
+            brakeAudio.PlayOneShot(brakeSE);
+            SEtimer = 0;
+        }
+        if (SEtimer >= musicLength)
+        {
+            playingSound = false;
+        }
+        speedY -= VelocityVariation(brake);
+        speedY = Mathf.Max(speedY, 0);
     }
 }
