@@ -844,7 +844,7 @@ PrefabInstance:
     - target: {fileID: 7382436827448436641, guid: a0f694b2f23b0c549b86ed0e4f41117f,
         type: 3}
       propertyPath: goalPoint_
-      value: 200
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 7382436827448436643, guid: a0f694b2f23b0c549b86ed0e4f41117f,
         type: 3}
@@ -856,6 +856,21 @@ PrefabInstance:
       propertyPath: TimerObject_
       value: 
       objectReference: {fileID: 1434931463}
+    - target: {fileID: 7382436828140299041, guid: a0f694b2f23b0c549b86ed0e4f41117f,
+        type: 3}
+      propertyPath: waveParameters_.Array.data[0].obisSpawnArea_
+      value: 146.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382436828140299041, guid: a0f694b2f23b0c549b86ed0e4f41117f,
+        type: 3}
+      propertyPath: waveParameters_.Array.data[1].obisSpawnArea_
+      value: 150.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382436828140299041, guid: a0f694b2f23b0c549b86ed0e4f41117f,
+        type: 3}
+      propertyPath: waveParameters_.Array.data[2].obisSpawnArea_
+      value: 147.72
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f694b2f23b0c549b86ed0e4f41117f, type: 3}
 --- !u!1001 &7827686455975521935
