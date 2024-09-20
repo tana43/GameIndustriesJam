@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 //‚R‚Â‚Ì“¹˜H‚ğŠÇ—‚·‚é

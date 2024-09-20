@@ -49,7 +49,7 @@ public class Timer : MonoBehaviour
                 timerText.color = Color.red;
 
                 // ˆÃ“]‚µ‚ÄƒŠƒUƒ‹ƒg‰æ–Ê‚Ö
-                GameObject.Find("Fade").GetComponent<FadeController>().PlayFadeOut();
+                //GameObject.Find("Fade").GetComponent<FadeController>().PlayFadeOut();
             }
             else if (timer_ < 10.0f)
             {
