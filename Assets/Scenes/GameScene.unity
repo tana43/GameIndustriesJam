@@ -162,6 +162,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5858973072131323324, guid: 5e0a3e9cb0b0ad148aef8c9280ef5e00,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7197870622597854817, guid: 5e0a3e9cb0b0ad148aef8c9280ef5e00,
         type: 3}
       propertyPath: m_Name
@@ -487,7 +492,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1993227958
 GameObject:
@@ -756,6 +761,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626796869566618245, guid: c1edbe8df011afc4fac846c506652725,
+        type: 3}
+      propertyPath: borderSpeed
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3626796869566618245, guid: c1edbe8df011afc4fac846c506652725,
         type: 3}

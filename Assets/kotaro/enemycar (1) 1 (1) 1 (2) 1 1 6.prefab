@@ -198,7 +198,7 @@ MonoBehaviour:
   movespeed: 5
   minspeed: 1
   maxspeed: 5
-  player: {fileID: 7197870622597854817, guid: 5e0a3e9cb0b0ad148aef8c9280ef5e00, type: 3}
+  player: {fileID: 5858973072131323324, guid: 5e0a3e9cb0b0ad148aef8c9280ef5e00, type: 3}
 --- !u!61 &3155510918514926926
 BoxCollider2D:
   m_ObjectHideFlags: 0
