@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class Result : MonoBehaviour
@@ -16,24 +17,33 @@ public class Result : MonoBehaviour
     public static float maxWave;
     public static float maxSpeed;
 
+    public Text maxSpeedText;
     public Text resultText;
 
     // Start is called before the first frame update
     void Start()
     {
+        maxSpeedText.text = "";
         resultText.text = "";
 
+        // 最高速
+        maxSpeedText.text = $"{"maxspeed:" + SpeedSystem.generalSpeed_.ToString("N2")}\r\n";
+
+        // waveとタイム
         if (resultText == null) return;
         foreach (ResultScore score in resultScores)
         {
-            resultText.text += $"{"wave:" + score.wave + ":" + score.time}\r\n";
+            resultText.text += $"{"wave:" + score.wave + ":" + score.time.ToString("N2")}\r\n";
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            GameObject.Find("Fade").GetComponent<FadeController>().PlayFadeOut();
+        }
     }
 
     // ウェーブ数の取得
