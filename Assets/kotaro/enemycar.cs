@@ -47,12 +47,10 @@ public class enemycar : MonoBehaviour
     {
         Debug.Log("“–‚½‚Á‚½‚æ");
 
-        if (collision.tag=="Player")
+        if (collision.tag == "Player") 
 		{
             transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().enabled = true;
             GetComponent<SpriteRenderer>().enabled = false;
-            //GameObject effect = GameObject.FindGameObjectWithTag("posteffect");
-            //effect.GetComponent<PostProcessVolume>().profile.GetSetting<Vignette>().active = false;
         }
     }
 }
