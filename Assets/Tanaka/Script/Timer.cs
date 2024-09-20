@@ -29,6 +29,23 @@ public class Timer : MonoBehaviour
         if (timerStart_)
         {
             timer_ -= Time.deltaTime;
+            if (timer_ < 0)
+            {
+
+                //タイマーが０のときは赤
+                timer_ = 0;
+                timerText.color = Color.red;
+            }
+            else
+            {
+                //タイマーが動作のときは白
+                timerText.color = Color.white;
+            }
+        }
+        else
+        {
+            //タイマーが止まっているときは黄色
+            timerText.color = Color.yellow;
         }
 
         //00:00:00　こんな感じになるようにする
