@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     private float SEbrakeLength   = 2.200f;              //SE(軽いブレーキ)の長さ
     private float SErunLength     = 9.400f;              //SE(走行音)の長さ
     private float SEacceleLength  = 7.040f;              //SE(アクセル)のながさ
-    private float SEcrashleLength  = 1.000f;              //SE(ぶつかる)のながさ
+    private float SEcrashLength  = 0.410f;              //SE(ぶつかる)のながさ
     private float acceleVolumeMax = 150;                 //アクセルの音量
     public float normalize = 0;                          //音量正規化
     [SerializeField] float moveRotationSpeed = 3.0f;　   //ボタンが押された際の回転スピード
@@ -34,9 +34,11 @@ public class Player : MonoBehaviour
     bool acceleSound = false;
     bool brakeSound = false;
     bool runSound = false;
+    bool crashSound = false;
     public float SEtimer=0;
     float SEkaiten = 0;
     float SErun = 0;
+    public float SEcrash = 0;
 
     //ドライバー
     private Driver driver;
@@ -47,6 +49,7 @@ public class Player : MonoBehaviour
     public AudioClip rotaitionSE;
     public AudioClip acceleSE;
     public AudioClip runSE;
+    public AudioClip crashSE;
     AudioSource acceleAudio;
     AudioSource rotaitionAudio;
     AudioSource brakeAudio;
@@ -79,6 +82,8 @@ public class Player : MonoBehaviour
         runAudio.loop = true;
 
 
+        crashAudio = gameObject.AddComponent<AudioSource>();        //ぶつかるSE
+        crashAudio.loop = false;
 
     }
 
@@ -88,6 +93,7 @@ public class Player : MonoBehaviour
         rotaitionAudio.Play();
         brakeAudio.Play();
         runAudio.Play();
+        crashAudio.Play();
 
         normalize = speedY / acceleVolumeMax;   //速度の正規化？
         normalize = Mathf.Clamp01(normalize);
@@ -232,6 +238,7 @@ public class Player : MonoBehaviour
         SEtimer += Time.deltaTime;
         SEkaiten += Time.deltaTime;
         SErun += Time.deltaTime;
+        SEcrash += Time.deltaTime;
     }
 
     // Update is called once per frame
@@ -285,6 +292,16 @@ public class Player : MonoBehaviour
         Debug.Log("当たり！");
         if (speedY > 10)
         {
+            if(crashSound==false)
+            {
+                crashSound = true;
+                crashAudio.PlayOneShot(crashSE);
+                SEcrash = 0;
+            }
+            if(SEcrash>=SEcrashLength)
+            {
+                crashSound = false;
+            }
             //カメラシェイク
             var inpulseSource = came.GetComponent<CinemachineImpulseSource>();
             inpulseSource.GenerateImpulse();

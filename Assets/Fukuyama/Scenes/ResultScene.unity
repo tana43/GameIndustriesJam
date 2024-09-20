@@ -240,6 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072c83e4987aebb4d9eab35430819153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeedText: {fileID: 1413630074}
   resultText: {fileID: 1258698763}
 --- !u!1 &298737846
 GameObject:
