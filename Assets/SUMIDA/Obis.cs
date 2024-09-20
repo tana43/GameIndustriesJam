@@ -14,6 +14,11 @@ public class Obis : MonoBehaviour
     private GameObject driverObject_;
     private Driver driverScript_;
 
+    //各速度違反計測点数
+    public float speeding4Score_ = 20.0f;
+    
+    public float speeding6Score_ = 40.0f;
+
     //プレイヤーは通過したか
     public bool passing_;
 
@@ -43,16 +48,14 @@ public class Obis : MonoBehaviour
 
     private int CheckSpeed(float speed) 
     {
-        // 速度が20km未満なら
-        if (speed < 20)
+        // 違反速度を計測
+        if (speed < speeding4Score_)
         {
             Debug.Log("2点");
             return 2;
             //HP-=1;
         }
-
-        // 速度が20km以上かつ、25km未満なら
-        if (speed >= 20 && speed < 40)
+        else if (speed < speeding6Score_)
         {
             Debug.Log("4点");
             //HP-=2;
@@ -102,6 +105,9 @@ public class Obis : MonoBehaviour
         {
             //flashEffect生成
             Instantiate(flashEffectPrefab_, transform.position, Quaternion.Euler(Vector3.zero));
+
+            //センサーバーの色を変更
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
 
         if (collision.gameObject.tag == "enemycar")
@@ -119,7 +125,6 @@ public class Obis : MonoBehaviour
     {
         passing_ = true;
 
-        //センサーバーの色を変更
-        transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        
     }
 }

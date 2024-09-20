@@ -1,3 +1,4 @@
+using Autodesk.Fbx;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -10,6 +11,15 @@ public class ObisManager : MonoBehaviour
 
     //オービスの検知速度
     public float obisBorderSpeed_;
+
+    //各速度違反計測点数
+    [SerializeField]
+    private float speeding4Score_ = 20.0f;
+    [SerializeField]
+    private float speeding6Score_ = 40.0f;
+
+    //オービスの生成範囲
+    public float obisSpawnArea_;
 
     //そのウェーブで最初に生成されるオービスの配置位置
     //プレイヤーから見た距離
@@ -44,6 +54,18 @@ public class ObisManager : MonoBehaviour
     [SerializeField]
     private GameObject playerObject_;
 
+    //次のオービスを取得
+    public Obis GetNextObis()
+    {
+        if(nextObisIndex_ >= obisList_.Count)
+        {
+            return null;
+        }
+
+        var obis = obisList_[nextObisIndex_];
+        return obis;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,11 +95,14 @@ public class ObisManager : MonoBehaviour
         //生成時の座標は１５で割ったぐらいが丁度いい
         AddObis(spawnPosY / 15.0f);
 
+        float intervalSpawnPosY = spawnPosY;
         //ゴール地点を越えるまでループ処理
         while (true)
         {
             //生成位置を間隔分動かす
-            spawnPosY += obisSetInterval_;
+            intervalSpawnPosY += obisSetInterval_;
+
+            spawnPosY = intervalSpawnPosY + Random.RandomRange(-obisSpawnArea_, obisSpawnArea_);
 
             //生成位置がゴールを越えているなら生成せずに、ループを抜ける
             float dist = spawnPosY - playerPosY;
@@ -117,6 +142,8 @@ public class ObisManager : MonoBehaviour
 
         var obis = obj.GetComponent<Obis>();
         obis.borderSpeed = obisBorderSpeed_;
+        obis.speeding4Score_ = speeding4Score_;
+        obis.speeding6Score_ = speeding6Score_;
 
         //リストに登録
         obisList_.Add(obis);
@@ -126,7 +153,7 @@ public class ObisManager : MonoBehaviour
     void UpdatePassingObis()
     {
         //要素数が越えていないか
-        if (obisList_.Count >= nextObisIndex_) return;
+        if (nextObisIndex_ >= obisList_.Count) return;
 
         //通過しているなら次のオービスへ
         var obis = obisList_[nextObisIndex_];

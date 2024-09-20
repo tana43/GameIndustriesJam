@@ -8,9 +8,13 @@ public class GameSystem : MonoBehaviour
     public bool gameClear_;
 
     //ウェーブシステム
-    [SerializeField]
-    private GameObject waveSystemObject_;
+    public GameObject waveSystemObject_;
     private WaveSystem waveSystem_;
+
+    public WaveSystem GetWaveSystem()
+    {
+        return waveSystem_;
+    }
 
     //ゴールまでの設定距離
     public float goalPoint_;
@@ -49,7 +53,7 @@ public class GameSystem : MonoBehaviour
         if (!waitMode_)
         {
             TraveledUpdate();
-        }  
+        }
     }
 
     void GameClear()
@@ -93,7 +97,6 @@ public class GameSystem : MonoBehaviour
             }
         }
     }
-
     //待機状態へ
     public void ToWaitMode()
     {

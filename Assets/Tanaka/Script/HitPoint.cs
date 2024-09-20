@@ -24,5 +24,11 @@ public class HitPoint : MonoBehaviour
 
         //HPを表示
         timerText.text = driverScript_.hp_.ToString();
+
+        //死んでたらテキスト赤にする
+        if(driverScript_.die_)
+        {
+            timerText.color = Color.red;
+        }
     }
 }

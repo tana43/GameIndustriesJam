@@ -13,6 +13,8 @@ public class WaveSystem : MonoBehaviour
     public GameObject obisManagerObject_;
     private ObisManager obisManager_;
 
+    public ObisManager GetObisManager() { return obisManager_; }
+
     //ゲームシステム
     public GameObject gameSystemObject_;
     private GameSystem gameSystem_;
@@ -40,6 +42,10 @@ public class WaveSystem : MonoBehaviour
         public float timeLimit_;//時間制限
         public float obisSetInterval_;//オービスを配置する間隔
         public float obisFirstPoint_;//１つめのオービスまでの距離
+
+        //public float borderSpeed_;//違反速度
+
+        public float obisSpawnArea_;//オービスの生成範囲（20の場合、本来生成される位置から前後２０以内に生成される）
     }
 
     //各ウェーブでの設定値を保持させておく
@@ -64,13 +70,18 @@ public class WaveSystem : MonoBehaviour
 
         nextWaveWaitTimer_ = 0.0f;
 
-        //ウェーブ１へ
-        NextWave();
+        
     }
 
     // Update is called once per frame
     void Update()
     {   
+        if(currentWave_ == 0)
+        {
+            //ウェーブ１へ
+            NextWave();
+        }
+
         //テキスト更新
         TextUiUpdate();
 
@@ -95,6 +106,7 @@ public class WaveSystem : MonoBehaviour
         //オービスの設定
         obisManager_.obisSetInterval_ = wave.obisSetInterval_;
         obisManager_.spawnObisFirstPoint_ = wave.obisFirstPoint_;
+        obisManager_.obisSpawnArea_ = wave.obisSpawnArea_;
 
         //オービスマネージャーからオービス設置
         obisManager_.SetObis();
@@ -113,6 +125,9 @@ public class WaveSystem : MonoBehaviour
     //ウェーブをクリア 次のwaveがあるならfalse,ないならtrue
     public bool WaveClear()
     {
+        // リザルトのスコア更新
+        Result.SetResult(currentWave_, timer_.GetTimer());
+
         //次のウェーブ数を取得
         int newWave = currentWave_ + 1;
 

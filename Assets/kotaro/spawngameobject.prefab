@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6007019641203790750
+--- !u!1 &1062922766527189850
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6007019641203790744}
-  - component: {fileID: 6007019641203790751}
+  - component: {fileID: 1062922766527189848}
+  - component: {fileID: 1062922766527189851}
   m_Layer: 0
   m_Name: spawngameobject
   m_TagString: enemycar
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6007019641203790744
+--- !u!4 &1062922766527189848
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6007019641203790750}
+  m_GameObject: {fileID: 1062922766527189850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.3006036, y: -0.36131367, z: -0.0069113974}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,13 +32,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6007019641203790751
+--- !u!114 &1062922766527189851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6007019641203790750}
+  m_GameObject: {fileID: 1062922766527189850}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e88233fc0391374489849bc8ea7d4c88, type: 3}
@@ -53,6 +53,11 @@ MonoBehaviour:
   - {fileID: 8241151390983908948, guid: ff9def72ce4d04b48865a3f65abccd5c, type: 3}
   - {fileID: 3488177002180387438, guid: 4c660e9e910d9544481b67bd74b87f0e, type: 3}
   spown: 1
-  shotPoint: {x: 0.6, y: 6.5}
+  shotPoint: {x: 0, y: 6.5}
   adjustment: 2.5
-  spawntime: 2.5
+  adjustmentmin: 2
+  adjustmentmax: 3
+  spawntime: 0
+  spawntimemin: 0.5
+  spawntimemax: 2
+  spawnrandom: 0
