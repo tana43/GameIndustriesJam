@@ -105,6 +105,9 @@ public class Obis : MonoBehaviour
         {
             //flashEffect生成
             Instantiate(flashEffectPrefab_, transform.position, Quaternion.Euler(Vector3.zero));
+
+            //センサーバーの色を変更
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
 
         if (collision.gameObject.tag == "enemycar")
@@ -122,7 +125,6 @@ public class Obis : MonoBehaviour
     {
         passing_ = true;
 
-        //センサーバーの色を変更
-        transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        
     }
 }
