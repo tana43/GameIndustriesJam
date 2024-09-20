@@ -70,13 +70,18 @@ public class WaveSystem : MonoBehaviour
 
         nextWaveWaitTimer_ = 0.0f;
 
-        //ウェーブ１へ
-        NextWave();
+        
     }
 
     // Update is called once per frame
     void Update()
     {   
+        if(currentWave_ == 0)
+        {
+            //ウェーブ１へ
+            NextWave();
+        }
+
         //テキスト更新
         TextUiUpdate();
 

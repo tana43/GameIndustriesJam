@@ -53,7 +53,7 @@ public class GameSystem : MonoBehaviour
         if (!waitMode_)
         {
             TraveledUpdate();
-        }  
+        }
     }
 
     void GameClear()
@@ -97,7 +97,6 @@ public class GameSystem : MonoBehaviour
             }
         }
     }
-
     //ë“ã@èÛë‘Ç÷
     public void ToWaitMode()
     {
