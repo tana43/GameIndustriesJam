@@ -771,6 +771,21 @@ PrefabInstance:
       propertyPath: playerObject_
       value: 
       objectReference: {fileID: 759141250}
+    - target: {fileID: 7382436827355904105, guid: a0f694b2f23b0c549b86ed0e4f41117f,
+        type: 3}
+      propertyPath: speeding4Score_
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382436827355904105, guid: a0f694b2f23b0c549b86ed0e4f41117f,
+        type: 3}
+      propertyPath: speeding6Score_
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382436827355904105, guid: a0f694b2f23b0c549b86ed0e4f41117f,
+        type: 3}
+      propertyPath: obisBorderSpeed_
+      value: 120.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7382436827448436640, guid: a0f694b2f23b0c549b86ed0e4f41117f,
         type: 3}
       propertyPath: m_RootOrder
@@ -825,6 +840,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382436827448436641, guid: a0f694b2f23b0c549b86ed0e4f41117f,
+        type: 3}
+      propertyPath: goalPoint_
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7382436827448436643, guid: a0f694b2f23b0c549b86ed0e4f41117f,
         type: 3}

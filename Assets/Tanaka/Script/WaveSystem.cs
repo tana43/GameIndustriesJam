@@ -40,6 +40,8 @@ public class WaveSystem : MonoBehaviour
         public float timeLimit_;//時間制限
         public float obisSetInterval_;//オービスを配置する間隔
         public float obisFirstPoint_;//１つめのオービスまでの距離
+
+        //public float borderSpeed_;//違反速度
     }
 
     //各ウェーブでの設定値を保持させておく
