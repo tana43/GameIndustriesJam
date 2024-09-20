@@ -1189,7 +1189,7 @@ PrefabInstance:
     - target: {fileID: 7382436827448436641, guid: a0f694b2f23b0c549b86ed0e4f41117f,
         type: 3}
       propertyPath: goalPoint_
-      value: 3000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 7382436827448436643, guid: a0f694b2f23b0c549b86ed0e4f41117f,
         type: 3}
@@ -1215,6 +1215,36 @@ PrefabInstance:
         type: 3}
       propertyPath: waveParameters_.Array.data[2].obisSpawnArea_
       value: 147.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382436828140299041, guid: a0f694b2f23b0c549b86ed0e4f41117f,
+        type: 3}
+      propertyPath: waveParameters_.Array.data[0].obisFirstPoint_
+      value: 1550
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382436828140299041, guid: a0f694b2f23b0c549b86ed0e4f41117f,
+        type: 3}
+      propertyPath: waveParameters_.Array.data[1].obisFirstPoint_
+      value: 1550
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382436828140299041, guid: a0f694b2f23b0c549b86ed0e4f41117f,
+        type: 3}
+      propertyPath: waveParameters_.Array.data[2].obisFirstPoint_
+      value: 1550
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382436828140299041, guid: a0f694b2f23b0c549b86ed0e4f41117f,
+        type: 3}
+      propertyPath: waveParameters_.Array.data[0].obisSetInterval_
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382436828140299041, guid: a0f694b2f23b0c549b86ed0e4f41117f,
+        type: 3}
+      propertyPath: waveParameters_.Array.data[1].obisSetInterval_
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382436828140299041, guid: a0f694b2f23b0c549b86ed0e4f41117f,
+        type: 3}
+      propertyPath: waveParameters_.Array.data[2].obisSetInterval_
+      value: 3000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f694b2f23b0c549b86ed0e4f41117f, type: 3}
