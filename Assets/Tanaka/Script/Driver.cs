@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Driver : MonoBehaviour
@@ -63,7 +64,7 @@ public class Driver : MonoBehaviour
     }
 
     //–Æ’â‰‰o
-    void LicenseSuspensionUpdate()
+    async void LicenseSuspensionUpdate()
     {
         if (!die_) return;
 
@@ -74,6 +75,10 @@ public class Driver : MonoBehaviour
         {
             Instantiate(LatterEffectPrefab_);
             playedEffect_ = true;
+
+            await Task.Delay(200);  //ˆÃ“]‚·‚é‚Ü‚Å‘Ò‚Â
+            // ˆÃ“]‚µ‚ÄƒŠƒUƒ‹ƒg‰æ–Ê‚Ö
+            GameObject.Find("Fade").GetComponent<FadeController>().PlayFadeOut();
         }
     }
 }
