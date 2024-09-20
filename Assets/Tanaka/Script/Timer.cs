@@ -47,6 +47,9 @@ public class Timer : MonoBehaviour
                 //タイマーが０のときは赤
                 timer_ = 0;
                 timerText.color = Color.red;
+
+                // 暗転してリザルト画面へ
+                GameObject.Find("Fade").GetComponent<FadeController>().PlayFadeOut();
             }
             else if (timer_ < 10.0f)
             {
@@ -112,5 +115,10 @@ public class Timer : MonoBehaviour
     public void SetTimer(float time)
     {
         timer_ = time;
+    }
+
+    public float GetTimer()
+    {
+        return timer_;
     }
 }

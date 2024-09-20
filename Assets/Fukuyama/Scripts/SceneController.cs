@@ -22,12 +22,12 @@ public class SceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Aƒ{ƒ^ƒ“‚Å‘JˆÚ
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            audioSource.PlayOneShot(sound);
-            fadeObject.GetComponent<FadeController>().PlayFadeOut();
-        }
+        //// Aƒ{ƒ^ƒ“‚Å‘JˆÚ
+        //if (Input.GetKeyDown(KeyCode.A))
+        //{
+        //    audioSource.PlayOneShot(sound);
+        //    fadeObject.GetComponent<FadeController>().PlayFadeOut();
+        //}
 
         if (fadeObject.GetComponent<FadeController>().IsPlayFadeOut())
         {

@@ -1,3 +1,4 @@
+using Autodesk.Fbx;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -56,12 +57,13 @@ public class ObisManager : MonoBehaviour
     //次のオービスを取得
     public Obis GetNextObis()
     {
-        var obis = obisList_[nextObisIndex_];
-        if(obis)
+        if(nextObisIndex_ >= obisList_.Count)
         {
-            return obis;
+            return null;
         }
-        return null;
+
+        var obis = obisList_[nextObisIndex_];
+        return obis;
     }
 
     // Start is called before the first frame update
