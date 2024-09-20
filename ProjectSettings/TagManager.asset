@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - enemycar
+  - posteffect
   layers:
   - Default
   - TransparentFX

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7197870622597854826}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,10 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059caba9c7d8fa44bad5cb2c5240feb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brake: 4
   acceleration: 5
   initialVelocity: 60
-  speed: 10
+  speedX: 10
   speedY: 0
   deceleration: 3
   rotation: 30.08
@@ -110,6 +109,7 @@ MonoBehaviour:
   moveRotationSpeed: 3
   ReturnRotationSpeed: 5
   rate: 0
+  came: {fileID: 3054606445166230216, guid: e3c62c483707c5b4e8f9cf76a683fd24, type: 3}
   test: 0
 --- !u!61 &7197870622597854829
 BoxCollider2D:
