@@ -23,11 +23,6 @@ public class Result : MonoBehaviour
     {
         resultText.text = "";
 
-        // テスト
-        SetResult(1, 20);
-        SetResult(2, 40);
-        SetResult(3, 55);
-
         if (resultText == null) return;
         foreach (ResultScore score in resultScores)
         {
@@ -42,19 +37,19 @@ public class Result : MonoBehaviour
     }
 
     // ウェーブ数の取得
-    public void SetMaxWave(int wave)
+    public static void SetMaxWave(int wave)
     {
         maxWave = wave;
     }
 
     // リザルトの取得
-    public void SetResult(int wave, float time)
+    public static void SetResult(int wave, float time)
     {
         resultScores.Add(new ResultScore { wave = wave, time = time });
     }
 
     // 最高速の取得
-    public void SetMaxSpeed(float speed)
+    public static void SetMaxSpeed(float speed)
     {
         if (speed > maxSpeed)
         {

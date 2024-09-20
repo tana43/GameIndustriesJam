@@ -125,6 +125,9 @@ public class WaveSystem : MonoBehaviour
     //ウェーブをクリア 次のwaveがあるならfalse,ないならtrue
     public bool WaveClear()
     {
+        // リザルトのスコア更新
+        Result.SetResult(currentWave_, timer_.GetTimer());
+
         //次のウェーブ数を取得
         int newWave = currentWave_ + 1;
 
