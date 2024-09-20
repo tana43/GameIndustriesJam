@@ -30,7 +30,7 @@ public class Result : MonoBehaviour
         resultText.text = "";
 
         // ç≈çÇë¨
-        maxSpeedText.text += $"{"maxspeed:" + SpeedSystem.generalSpeed_}\r\n";
+        maxSpeedText.text += $"{"maxspeed:" + SpeedSystem.maxSpeed.ToString("N2")}\r\n";
 
         // waveÇ∆É^ÉCÉÄ
         foreach (ResultScore score in resultScores)
