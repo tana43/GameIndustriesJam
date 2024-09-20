@@ -7,40 +7,54 @@ using Cinemachine;
 
 public class Player : MonoBehaviour
 {
-    public float acceleration = 10;                     //加速度      
-    public float initialVelocity = 60;                  //初速
-    public float speedX = 10.0f;                        //x軸の変化量
-    public float speedY = 0;                            //道路の速度変化量
-    public float deceleration = 3.0f;                   //減速
-    public float rotation = 30.0f;                      //角度
-    public float startRotation = 0;                     //角度の初期値
-    private float brake = 18;                           //ブレーキ用
-    private float oldRotation = 0.0f;                   //前回の回転値
-    private float moveRateVolume = 0.0f;                //ボタンが押されている際の回転値
-    private float stopRateVolume = 0.0f;　              //ボタンが押されていない時の回転値
-    private float musicLength = 3.318f;                 //SE(ブレーキ音)の長さ
-    private float SEbrakeLength = 2.200f;               //SE(軽いブレーキ)の長さ
-    private float SEacceleLength = 3.180f;              //SE(アクセル)の長さ
-    [SerializeField] float moveRotationSpeed = 3.0f;　  //ボタンが押された際の回転スピード
-    [SerializeField] float ReturnRotationSpeed = 5.0f;  //ボタンが押されていない時の回転スピード
-    [SerializeField] float rate = 0.0f;                 //回転補完計算結果
+    public float acceleration     = 10;                  //加速度      
+    public float initialVelocity  = 60;                  //初速
+    public float speedX           = 10.0f;               //x軸の変化量
+    public float speedY           = 0;                   //道路の速度変化量
+    public float deceleration     = 3.0f;                //減速
+    public float rotation         = 30.0f;               //角度
+    public float startRotation    = 0;                   //角度の初期値
+    private float brake           = 18;                  //ブレーキ用
+    private float oldRotation     = 0.0f;                //前回の回転値
+    private float moveRateVolume  = 0.0f;                //ボタンが押されている際の回転値
+    private float stopRateVolume  = 0.0f;　              //ボタンが押されていない時の回転値
+    private float musicLength     = 3.318f;              //SE(ブレーキ音)の長さ
+    private float SEbrakeLength   = 2.200f;              //SE(軽いブレーキ)の長さ
+    private float SErunLength     = 9.400f;              //SE(走行音)の長さ
+    private float SEacceleLength  = 7.040f;              //SE(アクセル)のながさ
+    private float SEcrashLength  = 0.410f;              //SE(ぶつかる)のながさ
+    private float acceleVolumeMax = 150;                 //アクセルの音量
+    public float normalize = 0;                          //音量正規化
+    [SerializeField] float moveRotationSpeed = 3.0f;　   //ボタンが押された際の回転スピード
+    [SerializeField] float ReturnRotationSpeed = 5.0f;   //ボタンが押されていない時の回転スピード
+    [SerializeField] float rate = 0.0f;                  //回転補完計算結果
     [SerializeField] GameObject came;
     bool cameraChine = false;
     bool playingSound = false;
     bool acceleSound = false;
     bool brakeSound = false;
+    bool runSound = false;
+    bool crashSound = false;
     public float SEtimer=0;
     float SEkaiten = 0;
+    float SErun = 0;
+    public float SEcrash = 0;
 
     //ドライバー
     private Driver driver;
 
     public float test = 0;                              //generalSpeed_の値を確認する用
 
-    public AudioClip sound1;
-    public AudioClip sound2;
-    public AudioClip sound3;
-    AudioSource audioSource;
+    public AudioClip brakeSE;
+    public AudioClip rotaitionSE;
+    public AudioClip acceleSE;
+    public AudioClip runSE;
+    public AudioClip crashSE;
+    AudioSource acceleAudio;
+    AudioSource rotaitionAudio;
+    AudioSource brakeAudio;
+    AudioSource runAudio;
+    AudioSource crashAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -48,16 +62,45 @@ public class Player : MonoBehaviour
         startRotation = 0.0f;
         speedY = 60;
         //Component取得
-        audioSource = GetComponent<AudioSource>();
+
+        //audioSource = GetComponent<AudioSource>();
 
         //ドライバーを取得
         var driverObj = GameObject.Find("Driver");
         driver = driverObj.GetComponent<Driver>();
+
+        acceleAudio    = gameObject.AddComponent<AudioSource>();  //アクセルのSE
+        acceleAudio.loop = false;
+
+        rotaitionAudio = gameObject.AddComponent<AudioSource>();  //方向転換時のSE
+        rotaitionAudio.loop = false;
+
+        brakeAudio = gameObject.AddComponent<AudioSource>();      //ブレーキのSE
+        brakeAudio.loop = false;
+
+        runAudio = gameObject.AddComponent<AudioSource>();        //走行音SE
+        runAudio.loop = true;
+
+
+        crashAudio = gameObject.AddComponent<AudioSource>();        //ぶつかるSE
+        crashAudio.loop = false;
+
     }
 
     private void FixedUpdate()
     {
-        audioSource.Play();
+        acceleAudio.Play();
+        rotaitionAudio.Play();
+        brakeAudio.Play();
+        runAudio.Play();
+        crashAudio.Play();
+
+        normalize = speedY / acceleVolumeMax;   //速度の正規化？
+        normalize = Mathf.Clamp01(normalize);
+        runAudio.volume = normalize;
+
+        rotaitionAudio.volume = 0.4f;           //進路変更のSE音量
+        brakeAudio.volume = 0.4f;               //ブレーキのSE音量
 
         Vector2 pos = transform.position;
         Vector3 angle = transform.eulerAngles;
@@ -65,14 +108,16 @@ public class Player : MonoBehaviour
         //ボタンが押された場合
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-
             if (brakeSound == false)
             {
-                audioSource.PlayOneShot(sound2);
-                brakeSound = true;
-                SEkaiten = 0;
+                if(speedY>100)
+                {
+                    rotaitionAudio.PlayOneShot(rotaitionSE);
+                    brakeSound = true;
+                    SEkaiten = 0;
+                }
             }
-            if (SEbrakeLength >= SEkaiten)
+            if (SEbrakeLength <= SEkaiten)
                 brakeSound = false;
             //lerpの割合を更新
             rate = Mathf.Clamp01(moveRateVolume += moveRotationSpeed * Time.deltaTime);
@@ -98,6 +143,7 @@ public class Player : MonoBehaviour
         else
         {
             brakeSound = false;
+            rotaitionAudio.Stop();
             angle.z = PlayerReturnRotation();
         }
         //スピード０の時X軸移動、回転できない
@@ -129,7 +175,7 @@ public class Player : MonoBehaviour
            
             if (acceleSound==false)
             {
-                audioSource.PlayOneShot(sound3);
+                acceleAudio.PlayOneShot(acceleSE);
                 acceleSound = true;
                 SEtimer = 0;
             }
@@ -151,7 +197,7 @@ public class Player : MonoBehaviour
             if (playingSound==false&&speedY>0)
             {
                 playingSound = true;
-                audioSource.PlayOneShot(sound1);
+                brakeAudio.PlayOneShot(brakeSE);
                 SEtimer = 0;
             }
             if(SEtimer>=musicLength)
@@ -164,12 +210,25 @@ public class Player : MonoBehaviour
         //自然減速
         else
         {
-            audioSource.Stop();
             playingSound = false;
             acceleSound = false;
+            brakeAudio.Stop();
+            acceleAudio.Stop();
             speedY -= VelocityVariation();
             speedY = Mathf.Max(speedY, 0);
         }
+        //走行音
+        if(runSound==false)
+        {
+            runSound = true;
+            runAudio.PlayOneShot(runSE);
+            SErun = 0;
+        }
+        if (SErun>=SErunLength)
+        {
+            runSound = false;
+        }
+
         transform.position = pos;
         transform.eulerAngles = angle;
         SpeedSystem.generalSpeed_ = speedY;
@@ -178,6 +237,8 @@ public class Player : MonoBehaviour
 
         SEtimer += Time.deltaTime;
         SEkaiten += Time.deltaTime;
+        SErun += Time.deltaTime;
+        SEcrash += Time.deltaTime;
     }
 
     // Update is called once per frame
@@ -229,21 +290,35 @@ public class Player : MonoBehaviour
     public void OnCollisionStay2D(Collision2D collision)
     {
         Debug.Log("当たり！");
-        //カメラシェイク
-        var inpulseSource = came.GetComponent<CinemachineImpulseSource>();
-        inpulseSource.GenerateImpulse();
-        //減速
-        speedY -= (acceleration+30 )* Time.deltaTime;
-        speedY = Mathf.Max(speedY, 0);
+        if (speedY > 10)
+        {
+            if(crashSound==false)
+            {
+                crashSound = true;
+                crashAudio.PlayOneShot(crashSE);
+                SEcrash = 0;
+            }
+            if(SEcrash>=SEcrashLength)
+            {
+                crashSound = false;
+            }
+            //カメラシェイク
+            var inpulseSource = came.GetComponent<CinemachineImpulseSource>();
+            inpulseSource.GenerateImpulse();
+           //減速
+            speedY -= (acceleration + 30) * Time.deltaTime;
+            speedY = Mathf.Max(speedY, 0);
+        }
     }
 
     //死んだ（免停）のときに自動でブレーキを掛ける
     void LicenseSuspensionBrake()
     {
+        //audioSource.Play();
         if (playingSound == false && speedY > 0)
         {
             playingSound = true;
-            audioSource.PlayOneShot(sound1);
+            brakeAudio.PlayOneShot(brakeSE);
             SEtimer = 0;
         }
         if (SEtimer >= musicLength)
