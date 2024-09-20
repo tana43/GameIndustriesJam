@@ -229,6 +229,8 @@ public class Player : MonoBehaviour
             runSound = false;
         }
 
+        pos.y = -2.06f;
+
         transform.position = pos;
         transform.eulerAngles = angle;
         SpeedSystem.generalSpeed_ = speedY;
