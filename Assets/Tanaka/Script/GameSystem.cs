@@ -8,9 +8,13 @@ public class GameSystem : MonoBehaviour
     public bool gameClear_;
 
     //ウェーブシステム
-    [SerializeField]
-    private GameObject waveSystemObject_;
+    public GameObject waveSystemObject_;
     private WaveSystem waveSystem_;
+
+    public WaveSystem GetWaveSystem()
+    {
+        return waveSystem_;
+    }
 
     //ゴールまでの設定距離
     public float goalPoint_;

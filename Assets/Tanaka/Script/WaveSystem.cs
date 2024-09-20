@@ -13,6 +13,8 @@ public class WaveSystem : MonoBehaviour
     public GameObject obisManagerObject_;
     private ObisManager obisManager_;
 
+    public ObisManager GetObisManager() { return obisManager_; }
+
     //ゲームシステム
     public GameObject gameSystemObject_;
     private GameSystem gameSystem_;
