@@ -5,11 +5,14 @@ using UnityEngine;
 public class GameSystem : MonoBehaviour
 {
     //ゲームクリア
-    public bool gameClear_;
+    static public bool gameClear_;
 
     //ウェーブシステム
     public GameObject waveSystemObject_;
     private WaveSystem waveSystem_;
+
+    //エネミースポーンシステム
+    public GameObject enemySpawnSystemObject_;
 
     public WaveSystem GetWaveSystem()
     {
@@ -32,6 +35,9 @@ public class GameSystem : MonoBehaviour
 
     //待機時間（タイマーや距離の更新をしない状態）
     public bool waitMode_ = false;
+
+    //クリアエフェクト
+    public GameObject clearEffectPrefab_;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +65,13 @@ public class GameSystem : MonoBehaviour
     void GameClear()
     {
         gameClear_ = true;
+
+        //敵の生成を停止する
+        var spawnSystem = enemySpawnSystemObject_.GetComponent<enemysponescript>();
+        spawnSystem.enabled = false;
+
+        //クリアエフェクト
+        Instantiate(clearEffectPrefab_);
     }
 
     //進行距離の更新
