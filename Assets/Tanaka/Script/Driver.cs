@@ -13,6 +13,13 @@ public class Driver : MonoBehaviour
     //免許停止までのスコア
     private const int licenseSuspensionScore = 6;
 
+    //免停エフェクトのプレハブ
+    [SerializeField]
+    private GameObject LatterEffectPrefab_;
+
+    //エフェクトは再生済か
+   private bool playedEffect_ = false;
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +29,7 @@ public class Driver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        LicenseSuspensionUpdate();
     }
 
     //違反行為をした
@@ -53,5 +60,20 @@ public class Driver : MonoBehaviour
         die_ = true;
 
 
+    }
+
+    //免停演出
+    void LicenseSuspensionUpdate()
+    {
+        if (!die_) return;
+
+        //Time.timeScale -= Time.deltaTime;
+        //if (Time.timeScale < 0.1f)
+    
+        if(!playedEffect_)
+        {
+            Instantiate(LatterEffectPrefab_);
+            playedEffect_ = true;
+        }
     }
 }

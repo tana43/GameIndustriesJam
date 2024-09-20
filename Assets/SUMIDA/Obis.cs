@@ -7,16 +7,38 @@ public class Obis : MonoBehaviour
     public float borderSpeed = 90.0f;
     private bool collisionflag = false;
 
+    //エフェクトプレハブ
+    public GameObject flashEffectPrefab_;
+
+    //ドライバー
+    private GameObject driverObject_;
+    private Driver driverScript_;
+
+    //プレイヤーは通過したか
+    public bool passing_;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        driverObject_ = GameObject.Find("Driver");
+        driverScript_ = driverObject_.GetComponent<Driver>();
+        passing_ = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //速度に合わせてオービスを下へ動かしていく
+        var pos = transform.position;
+        pos.y -= RoadCommander.generalScrollSpeed_;
+        transform.position = pos;
 
+        //effectテスト
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            //flasheffect生成
+            Instantiate(flashEffectPrefab_, transform.position, Quaternion.Euler(Vector3.zero));
+        }
     }
 
     private int CheckSpeed(float speed) 
@@ -24,38 +46,49 @@ public class Obis : MonoBehaviour
         // 速度が20km未満なら
         if (speed < 20)
         {
-            Debug.Log("１点");
-            return 1;
+            Debug.Log("2点");
+            return 2;
             //HP-=1;
         }
 
         // 速度が20km以上かつ、25km未満なら
-        if (speed >= 20 && speed < 25)
+        if (speed >= 20 && speed < 40)
         {
-            Debug.Log("２点");
+            Debug.Log("4点");
             //HP-=2;
+            return 4;
         }
 
         // 速度が25km以上かつ、40km未満なら
-        if (speed >= 25 && speed < 40)
-        {
-            Debug.Log("３点");
-            //HP-=3;
-        }
+        //if (speed >= 25 && speed < 40)
+        //{
+        //    Debug.Log("３点");
+        //    //HP-=3;
+        //    return 3;
+        //}
 
-        // 速度が40km以上かつ、50km未満なら
-        if (speed >= 40 && speed < 50)
-        {
-            Debug.Log("５点");
-            //HP-=5;
-        }
+        // 速度が40km以上なら
+        //if (speed >= 40)
+        //{
+        //    Debug.Log("6点");
+        //    return 6;
+        //    //HP-=5;
+        //}
 
-        return 0;
+        Debug.Log("6点");
+
+        return 6;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        float carSpeed = collision.gameObject.GetComponent<Player>().speed;
+        Player player = collision.gameObject.GetComponent<Player>();
+        if(!player)return;
+
+        float carSpeed = collision.gameObject.GetComponent<Player>().speedY;
+
+        //プレイヤーの通過を検知
+        PlayerPassing();
 
         float scoreSpeed = carSpeed - borderSpeed;
 
@@ -64,15 +97,29 @@ public class Obis : MonoBehaviour
             return;
         }
 
-        int HP = 6;
-
-        HP-= CheckSpeed(scoreSpeed);
-
+        int score = CheckSpeed(scoreSpeed);
+        if (score > 0)
+        {
+            //flashEffect生成
+            Instantiate(flashEffectPrefab_, transform.position, Quaternion.Euler(Vector3.zero));
+        }
 
         if (collision.gameObject.tag == "enemycar")
         {
             Debug.Log("hit");
             collisionflag = true;
         }
+
+        //ドライバーに違反点数を科す
+        driverScript_.Violation(score);
+    }
+
+    //プレイヤーが通過した
+    void PlayerPassing()
+    {
+        passing_ = true;
+
+        //センサーバーの色を変更
+        transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 }

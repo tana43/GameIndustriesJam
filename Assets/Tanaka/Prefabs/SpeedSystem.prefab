@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28039a762cb5c6e4f9b84373d031a874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  protoSpeed_: 0
+  protoSpeed_: 1.04

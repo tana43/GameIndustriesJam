@@ -28,7 +28,24 @@ public class Timer : MonoBehaviour
         //タイマー更新
         if (timerStart_)
         {
-            timer_ += Time.deltaTime;
+            timer_ -= Time.deltaTime;
+            if (timer_ < 0)
+            {
+
+                //タイマーが０のときは赤
+                timer_ = 0;
+                timerText.color = Color.red;
+            }
+            else
+            {
+                //タイマーが動作のときは白
+                timerText.color = Color.white;
+            }
+        }
+        else
+        {
+            //タイマーが止まっているときは黄色
+            timerText.color = Color.yellow;
         }
 
         //00:00:00　こんな感じになるようにする
@@ -48,21 +65,26 @@ public class Timer : MonoBehaviour
     }
 
     //タイマー計測開始
-    void StartTimer()
+    public void StartTimer()
     {
         timerStart_ = true;
     }
 
     //タイマー計測終了
-    void StopTimer()
+    public void StopTimer()
     {
         timerStart_ = false;
     }
 
     //タイマーリセット
-    void ResetTimer()
+    public void ResetTimer()
     {
         timer_ = 0;
         timerStart_ = false;
+    }
+
+    public void SetTimer(float time)
+    {
+        timer_ = time;
     }
 }

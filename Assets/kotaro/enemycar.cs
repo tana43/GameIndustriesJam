@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
 
 public class enemycar : MonoBehaviour
 {
@@ -36,6 +38,14 @@ public class enemycar : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("hit");
+        Debug.Log("“–‚½‚Á‚½‚æ");
+
+        if (collision.tag=="Player")
+		{
+            transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            GetComponent<SpriteRenderer>().enabled = false;
+            //GameObject effect = GameObject.FindGameObjectWithTag("posteffect");
+            //effect.GetComponent<PostProcessVolume>().profile.GetSetting<Vignette>().active = false;
+        }
     }
 }
