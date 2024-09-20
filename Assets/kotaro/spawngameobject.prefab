@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6007019641203790750
+--- !u!1 &1062922766527189850
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6007019641203790744}
-  - component: {fileID: 6007019641203790751}
+  - component: {fileID: 1062922766527189848}
+  - component: {fileID: 1062922766527189851}
   m_Layer: 0
   m_Name: spawngameobject
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6007019641203790744
+--- !u!4 &1062922766527189848
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6007019641203790750}
+  m_GameObject: {fileID: 1062922766527189850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.3006036, y: -0.36131367, z: -0.0069113974}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,27 +32,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6007019641203790751
+--- !u!114 &1062922766527189851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6007019641203790750}
+  m_GameObject: {fileID: 1062922766527189850}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e88233fc0391374489849bc8ea7d4c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemycar:
-  - {fileID: 2999061895021714242, guid: 9b5e8a820d4e4de4e84762103f27d0ad, type: 3}
-  - {fileID: 3143530005113221554, guid: df0dfee80b1a00048a31726302718ec5, type: 3}
-  - {fileID: 8541649740242358550, guid: e6cd53491daad5e49983d0e1fb5054db, type: 3}
-  - {fileID: 158069121827342247, guid: ab98d51a36eeb2c4cb1ab6f9eb590833, type: 3}
-  - {fileID: 3699442387098345389, guid: a4fd06c12ccc088489e18938ebfc13ef, type: 3}
-  - {fileID: 8782529657795034691, guid: dc006002cc253a04d89507cd49d9ede0, type: 3}
-  - {fileID: 6767405550665797483, guid: 9afeeae770331924d8a35600bc508c7f, type: 3}
+  - {fileID: 5925550490754460868, guid: 081ff7adff0e4284588a3ff0df8c8e7c, type: 3}
+  - {fileID: 8425265298763993296, guid: 300155bc37e87124697e3b9792b9706b, type: 3}
+  - {fileID: 7247425005950355497, guid: d9a8a27fe4b0a0b4cb2d9aaea37d91bd, type: 3}
+  - {fileID: 559096359715175542, guid: ec2ae01b448a7a7479f09977760cbc91, type: 3}
+  - {fileID: 7518698106306413847, guid: 1737b61bca6b79d4882dd48673cef1a4, type: 3}
+  - {fileID: 8241151390983908948, guid: ff9def72ce4d04b48865a3f65abccd5c, type: 3}
+  - {fileID: 3488177002180387438, guid: 4c660e9e910d9544481b67bd74b87f0e, type: 3}
   spown: 1
-  shotPoint: {x: 0.6, y: 6.5}
+  shotPoint: {x: 0, y: 6.5}
   adjustment: 2.5
-  spawntime: 2.5
+  adjustmentmin: 2
+  adjustmentmax: 3
+  spawntime: 0
+  spawntimemin: 0.5
+  spawntimemax: 2
+  spawnrandom: 0
