@@ -7,6 +7,7 @@ public class SpeedSystem : MonoBehaviour
     //プレイヤーの速度が入る
     public static float generalSpeed_;
 
+    public static float maxSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -17,11 +18,17 @@ public class SpeedSystem : MonoBehaviour
     private void Awake()
     {
         //generalSpeed_ = protoSpeed_;
+
+       
     }
 
     // Update is called once per frame
     void Update()
-    {
+    { 
+        if (maxSpeed < generalSpeed_)
+        {
+            maxSpeed = generalSpeed_;
+        }
         
     }
 

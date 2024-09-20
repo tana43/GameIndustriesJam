@@ -22,15 +22,17 @@ public class Result : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {       
+        if (maxSpeedText == null) return;
+        if (resultText == null) return;
+
         maxSpeedText.text = "";
         resultText.text = "";
 
         // ç≈çÇë¨
-        maxSpeedText.text = $"{"maxspeed:" + SpeedSystem.generalSpeed_.ToString("N2")}\r\n";
+        maxSpeedText.text += $"{"maxspeed:" + SpeedSystem.maxSpeed.ToString("N2")}\r\n";
 
         // waveÇ∆É^ÉCÉÄ
-        if (resultText == null) return;
         foreach (ResultScore score in resultScores)
         {
             resultText.text += $"{"wave:" + score.wave + ":" + score.time.ToString("N2")}\r\n";
